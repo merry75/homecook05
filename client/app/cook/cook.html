@@ -1,0 +1,14 @@
+<navbar></navbar>
+
+<div class="container">
+  <p>The cook user can add/delete/edit/preview his own products at any time.</p>
+  <ul class="list-group">
+    <li class="list-group-item" ng-repeat="product in products">
+        <strong>{{product.name}}</strong><br>
+        <span class="text-muted">{{product.price}}</span>
+        <a ng-click="delete(user)" class="trash"><span class="glyphicon glyphicon-trash pull-right"></span></a>
+    </li>
+  </ul>
+</div>
+
+<footer></footer>
