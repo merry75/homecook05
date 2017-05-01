@@ -147,12 +147,12 @@ angular.module('meanshopApp')
         */
       isAdmin: function(callback) {
         if (arguments.length === 0) {
-          return currentUser.role === 'admin';
+          return currentUser.role === 'admin' || 'cook';
         }
 
         return this.getCurrentUser(null)
           .then(function(user) {
-            var is = user.role === 'admin';
+            var is = user.role === 'admin' || 'cook' ;
             safeCb(callback)(is);
             return is;
           });

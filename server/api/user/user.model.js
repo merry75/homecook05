@@ -6,6 +6,7 @@ var crypto = require('crypto');
 var authTypes = ['github', 'twitter', 'facebook', 'google'];
 
 var UserSchema = new Schema({
+  location: {type: [Number]},
   name: String,
   email: {
     type: String,
@@ -17,7 +18,6 @@ var UserSchema = new Schema({
   },
   password: String,
   provider: String,
-  location: {type: [Number], required: true}, // [Long, Lat]
   htmlverified: String,
   salt: String,
   facebook: {},
@@ -226,6 +226,7 @@ UserSchema.methods = {
     });
   }
 };
+
 
 UserSchema.index({location: '2dsphere'});
 
