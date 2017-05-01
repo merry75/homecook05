@@ -4,6 +4,7 @@ var mongoose = require('bluebird').promisifyAll(require('mongoose'));
 var Schema = mongoose.Schema;
 var crypto = require('crypto');
 var authTypes = ['github', 'twitter', 'facebook', 'google'];
+// var possibleRoles = ['user', 'cook','admin'];
 
 var UserSchema = new Schema({
   location: {type: [Number]},
@@ -12,10 +13,7 @@ var UserSchema = new Schema({
     type: String,
     lowercase: true
   },
-  role: {
-    type: String,
-    default: 'user'
-  },
+  role: [String],
   password: String,
   provider: String,
   htmlverified: String,

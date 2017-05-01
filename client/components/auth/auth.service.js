@@ -147,12 +147,32 @@ angular.module('meanshopApp')
         */
       isAdmin: function(callback) {
         if (arguments.length === 0) {
-          return currentUser.role === 'admin' || 'cook';
+          return currentUser.role == 'admin' ;
         }
 
         return this.getCurrentUser(null)
           .then(function(user) {
-            var is = user.role === 'admin' || 'cook' ;
+            var is = user.role == 'admin'  ;
+            safeCb(callback)(is);
+            return is;
+          });
+      },
+
+       /**
+        * Check if a user is a cook
+        *   (synchronous|asynchronous)
+        *
+        * @param  {Function|*} callback - optional, function(is)
+        * @return {Bool|Promise}
+        */
+      isCook: function(callback) {
+        if (arguments.length === 0) {
+          return currentUser.role == 'cook';
+        }
+
+        return this.getCurrentUser(null)
+          .then(function(user) {
+            var is = user.role == 'cook' ;
             safeCb(callback)(is);
             return is;
           });

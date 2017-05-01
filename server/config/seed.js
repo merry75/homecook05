@@ -14,9 +14,16 @@ User.find({}).removeAsync()
   .then(function() {
     User.createAsync({
       provider: 'local',
-      name: 'Test User',
-      email: 'test@test.com',
-      password: 'test'
+      name: 'user',
+      email: 'user@user.com',
+      password: 'user',
+      role: 'user'
+    }, {
+      provider: 'local',
+      name: 'cook',
+      email: 'cook@cook.com',
+      password: 'cook',
+      role: 'cook'
     }, {
       provider: 'local',
       role: 'admin',

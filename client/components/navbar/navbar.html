@@ -42,6 +42,7 @@
             <li ng-show="isAdmin()" role="separator" class="divider"></li>
             <li ng-show="isAdmin()"><a ui-sref="admin"><i class="fa fa-users"></i> Manage Users</a></li>
             <li ng-show="isAdmin()"><a ui-sref="newProduct"><i class="fa fa-plus"></i> Create Product</a></li>
+            <li ng-show="isCook()"><a ui-sref="newProduct"><i class="fa fa-plus"></i> Create Product</a></li>
           </ul>
         </li>
         <li ng-show="isLoggedIn()"><a ui-sref="logout"><i class="fa fa-sign-out"></i> Logout</a></li>

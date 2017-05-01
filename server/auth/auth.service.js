@@ -57,9 +57,40 @@ function hasRole(roleRequired) {
       }
       else {
         res.status(403).send('Forbidden');
+        console.log("why ??")
       }
+      console.log(req.user.role);
+      console.log("FAIS CHIERRR")
     });
 }
+
+// function hasRole(roleRequired) {
+//   if (roleRequired instanceof Array) {
+//     return compose()
+//       .use(isAuthenticated())
+//       .use(function(req, res, next) {
+//         for(var i = 0; i < roleRequired.length; i++) {
+//           if(req.user.role.indexOf(roleRequired[i]) > -1) {
+//             return next();
+//           }
+//         }
+//         res.status(403).send('Forbidden');
+//       });
+//   } else if (roleRequired instanceof String) {
+//     return compose()
+//       .use(isAuthenticated())
+//       .use(function(req, res, next) {
+//         if(req.user.role.indexOf(roleRequired) > -1) {
+//             next();
+//         } else {
+//           res.status(403).send('Forbidden');
+//           console.log("still not working!")
+//         }
+//       });
+//   } else {
+//     throw new Error('Required role needs to be set as string or array');
+//   }
+// }
 
 /**
  * Returns a jwt token signed by the app secret

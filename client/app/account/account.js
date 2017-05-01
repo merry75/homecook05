@@ -29,7 +29,7 @@ angular.module('meanshopApp')
         url: '/settings',
         templateUrl: 'app/account/settings/settings.html',
         controller: 'SettingsCtrl',
-        authenticate: true
+        authenticate: ['user','cook','admin']
       });
   })
   .run(function($rootScope) {

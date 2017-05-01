@@ -54,13 +54,15 @@ angular.module('meanshopApp', [
     $rootScope.$on('$stateChangeStart', function(event, next) {
       if (next.authenticate) {
         var loggedIn = Auth.isLoggedIn(function(role) {
-          if (role && role === next.authenticate) {
+          if (role && next.authenticate.indexOf(role[0]) !== -1) {
+            console.log('works')
             return; // logged in and roles matches
           }
 
           event.preventDefault();
           if(role) {
             // logged in but not have the privileges (roles mismatch)
+            console.log(next.authenticate.indexOf(role[0]));
             $state.go('onlyAdmin');
           } else {
             // not logged in
@@ -70,3 +72,18 @@ angular.module('meanshopApp', [
       }
     });
   });
+
+
+// .run(function($rootScope, $state, Auth) {
+//   // Redirect to login if route requires auth and the user is not logged in
+//   $rootScope.$on('$stateChangeStart', function(event, next) {
+//     if (next.authenticate) {
+//       Auth.isLoggedIn(function(loggedIn) {
+//         if (!loggedIn) {
+//           event.preventDefault();
+//           $state.go('login');
+//         }
+//       });
+//     }
+//   });
+// });

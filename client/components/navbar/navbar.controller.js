@@ -15,6 +15,7 @@ angular.module('meanshopApp')
     $scope.isCollapsed = true;
     $scope.isLoggedIn = Auth.isLoggedIn;
     $scope.isAdmin = Auth.isAdmin;
+    $scope.isCook = Auth.isCook;
     $scope.getCurrentUser = Auth.getCurrentUser;
 
     $scope.search = function () {
