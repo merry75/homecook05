@@ -5,6 +5,8 @@ var Schema = mongoose.Schema;
 var crypto = require('crypto');
 var authTypes = ['github', 'twitter', 'facebook', 'google'];
 // var possibleRoles = ['user', 'cook','admin'];
+var product = require('../product/product.model');
+
 
 var UserSchema = new Schema({
   location: {type: [Number]},
@@ -23,6 +25,8 @@ var UserSchema = new Schema({
   google: {},
   github: {}
 });
+
+
 
 /**
  * Virtuals

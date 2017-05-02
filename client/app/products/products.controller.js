@@ -57,9 +57,15 @@ angular.module('meanshopApp')
     };
   })
 
-  .controller('ProductNewCtrl', function ($scope, $state, Product) {
+  .controller('ProductNewCtrl', function ($scope, $state, Product, Auth, $stateParams) {
     $scope.product = {}; // create a new instance
     $scope.addProduct = function(){
+      // get id of the user posting the product
+      $scope.product.userId = Auth.getCurrentUser()._id;
+      //catalog manip
+      // $scope.product.categories = Product.catalog({id: $stateParams.slug});
+      // $scope.query = $stateParams.slug;
+
       return Product.save($scope.product).$promise.then(function (product) {
         return Product.upload($scope.product.picture, product._id);
       }).then(function (product) {
@@ -67,6 +73,24 @@ angular.module('meanshopApp')
       }).catch(errorHandler($scope));
     };
   })
+
+  //   .controller('ProductNewCtrl', function ($scope, $state, Product, Auth, $stateParams) {
+  //   $scope.product = {}; // create a new instance
+  //   $scope.addProduct = function(){
+  //     // get id of the user posting the product
+  //     $scope.product.userId = Auth.getCurrentUser()._id;
+  //     //get id of the catalog
+  //     return Product.catalog({id: $stateParams.slug}).$promise.then(function(categorie){
+  //         $scope.product.categories = categorie;
+  //         $scope.query = $stateParams.slug;
+  //         return Product.save($scope.product).$promise;
+  //     }).then(function (product) {
+  //       return Product.upload($scope.product.picture, product._id).$promise;
+  //     }).then(function (product) {
+  //       $state.go('viewProduct', {id: product._id});
+  //     }).catch(errorHandler($scope));
+  //   };
+  // })
 
   .controller('ProductEditCtrl', function ($scope, $state, $stateParams, Product, Upload, $timeout) {
     $scope.product = Product.get({id: $stateParams.id});

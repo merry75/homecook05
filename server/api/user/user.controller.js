@@ -132,3 +132,17 @@ exports.me = function(req, res, next) {
 exports.authCallback = function(req, res, next) {
   res.redirect('/');
 };
+
+// exports.test = function(req, res, next) {
+//   User.save(function(error) {
+//       if (!error) {
+//           User.find({})
+//               .populate('userproduct')
+//               .exec(function(error, users) {
+//                   console.log(JSON.stringify(users, null, "\t"))
+//               })
+//       }
+//       console.log("can't populate this shit")
+//   });
+
+// }
